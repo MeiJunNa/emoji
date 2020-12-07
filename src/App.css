@@ -198,3 +198,4 @@
     width: 25px;
     height: 25px;
   }
+#charInput:focus { border: none;outline:none; }
