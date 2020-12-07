@@ -24,6 +24,8 @@ class App extends Component {
   // 将输入框中的图片替换为emoji表情
   formatInputCon() {
     let inputValue = document.getElementById('charInput').innerHTML
+    inputValue = inputValue.replace(/<div>/g, '')
+    inputValue = inputValue.replace(/<\/div>/g, '')
     inputValue = inputValue.replace(/<img.*?(?:>|\/>)/gi, (val) => {
       let unicode = val.match(/unicode=[\'\"]?([^\'\"]*)[\'\"]?/i)[1]
       let icon = this.state.emojiIcon
@@ -58,6 +60,7 @@ class App extends Component {
   // 发送消息
   inputSend(e) {
     this.state.chatContent = this.formatInputCon().replace(/<br>/g, '\r\n')
+    chatContent = chatContent.replace(/&nbsp;/g, '')
     this.setState({showEmojiModal:false,showEmotions: true})
     //发送消息后清空输入框
     let inputValue = document.getElementById('charInput')
